@@ -178,7 +178,7 @@ def Users():
 @app.route('/user/<email>', methods=['POST'])
 def update_status(email):
   Email = email
-  database.user_appointment_data(Email)
+  database.update_appointment_status_in_db(Email)
   return redirect(request.referrer)
 
 if __name__ == "__main__":
