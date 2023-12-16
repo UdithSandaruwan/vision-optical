@@ -36,7 +36,7 @@ def get_user_auth_data(email):
 
 def add_appointment_data_to_db(name, phone, category, email, message):
   with engine.connect() as conn:
-      query = text("INSERT INTO flaskdevelopment.appointments VALUES(:name, :phone, :category, :email, :message)")
+      query = text("INSERT INTO flaskdevelopment.appointments VALUES(:name, :phone, :category, :email, :message, 0)")
       conn.execute(query, {"name": name, "phone": phone, "category": category, "email": email, "message": message})
 
 user_data_list = []

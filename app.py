@@ -163,24 +163,6 @@ def Appointments():
   appointment_count = database.appointment_count
   return render_template('appointments.html',user_appointment_list=user_appointment_list, appointment_count=appointment_count)
 
-@app.route("/appointments/u")
-def Appointments_u():
-  appointment_list=database.user_appointment_data(Email)
-  appointment_count = database.appointment_count_u
-  return render_template('appointments.html',appointment_list=appointment_list, appointment_count=appointment_count)
-
-@app.route("/users")
-def Users():
-  user_data_list=database.get_user_data()
-  user_count = database.user_count
-  return render_template('users.html',user_data_list=user_data_list, user_count=user_count)
-
-@app.route('/user/<email>', methods=['POST'])
-def update_status(email):
-  Email = email
-  database.user_appointment_data(Email)
-  return redirect(request.referrer)
-
 if __name__ == "__main__":
   app.run(host='0.0.0.0', debug=True)
 
