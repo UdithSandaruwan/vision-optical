@@ -109,24 +109,29 @@ def SignIn_user():
 
   out=redirect(url_for('SignIn'))
   get_user_auth_data(Email)
-        
+  
+  done_u = redirect(url_for('user_dashboard'))
 
   user_email=database.user_data["Email"]
   user_password=database.user_data["Password"]
 
   if user_email==Email and user_password==Password:
-    return done
+    if "vo" in user_password.lower():
+      return done
+    else:
+      return done_u
   else:
     return out
 
 @app.route("/adminPanel")
 def admin_dashboard():
-  return render_template('adminPanel.html')
+  database.get_user_data()
+  user_count = database.user_count
+  return render_template('adminPanel.html',user_count=user_count)
   
-@app.route("/dashboard")
+@app.route("/user/")
 def user_dashboard():
-  user_name=database.user_data["Name"]
-  return render_template('dashboard.html',user_name=user_name)
+  return render_template('single_user.html')
 
 @app.route("/user/reg/appointment", methods=['POST'])  
 def Set_Appointment():
@@ -152,6 +157,29 @@ def user_profile():
 def privacy_policypolicy():
   return render_template('privacypolicy.html')
 
+@app.route("/appointments")
+def Appointments():
+  user_appointment_list=database.get_user_appointment_data()
+  appointment_count = database.appointment_count
+  return render_template('appointments.html',user_appointment_list=user_appointment_list, appointment_count=appointment_count)
+
+@app.route("/appointments/u")
+def Appointments_u():
+  appointment_list=database.user_appointment_data(Email)
+  appointment_count = database.appointment_count_u
+  return render_template('appointments.html',appointment_list=appointment_list, appointment_count=appointment_count)
+
+@app.route("/users")
+def Users():
+  user_data_list=database.get_user_data()
+  user_count = database.user_count
+  return render_template('users.html',user_data_list=user_data_list, user_count=user_count)
+
+@app.route('/user/<email>', methods=['POST'])
+def update_status(email):
+  Email = email
+  database.user_appointment_data(Email)
+  return redirect(request.referrer)
 
 if __name__ == "__main__":
   app.run(host='0.0.0.0', debug=True)
