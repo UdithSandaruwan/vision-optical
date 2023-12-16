@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "dsefinalproject-vision-optical",
+  "private_key_id": "5cea7825a0398158fd78c83ab593653569768780",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDhkmFt1FLonFKP\neCt7utjVq5JEfshK8AL0uqByVmf2kohumesWVoTCOYs1mfS756aLvu5abo1Q9AEm\noYc/qKr0MeivSTQ0jdCDObaTas7LP5054wB2/xSmnPrJTAhXdeJ0xs0CHcift4tH\naWOR50+QN8gS/4zmeiygkILkb/Nw2BgV0UWWnM3Fp6D6CTQ1Rcn1QHA+lnAwPQwV\n4FdvTZzfGQI2FaqiP+fqzzyb/ZKypQpqbwsvYsf9JDjv/K+E4lnRXerKEuJczdpI\nxzm1OImUigrx0Bkf6AXxoAA/xFuTrMUl/JNV65QuqPGCc3lw9nOX6TXQ6GdiJ2aK\nSdkmAXlHAgMBAAECggEAN7LT8PExKbPT5Q44unwYJ6aOXvBpV6utJy3gCWuRjz5+\nhsTl2iWx8V2RJMKnvjBEnRQfud+7cEZX9GiFQ3BMCjE6sfGi/OkZmBWLohoJBwHl\nulH1nux8dmmjuUnXc3Ut3kTqgT/Gdr21HASHbBMQP92uPxav/Yckdt9IGs0T8QRM\nN6KbNFSek/AKxJB7wqlUhnd1VxZ4a/WozG5wQfDSVg0K5yb+tzPAYkyvwLkM+Jnq\nxCC2n+WaZ27RIsQGvrJuCmvF4hbHIrf404Eb9AU9p0YvEEmJiBRB6rM3YILvmElK\nm/Kxb1HogrRpC27zXgzR5ZsrUDdlpxLB/aSKSE3zsQKBgQD1EL9Pf5uW33Kwubfg\nHYvM5YnNv+gXpnQ+VfKvrR9bUONWVLN2O+ALgd6abSWi4mU9c2GpPrKtdjzvNq7W\nbnf5WHOAYtEY5xWgBo+AO7h0Q6Y44XH4EDj7aLzQY05UmVgVkoIeHJkMm0FeYvVf\n4dJO2ZnFZxKlAM/YMcCWDLRbUQKBgQDrovfMW968t0rAGkyf/Bab7LJ0Gm98l5Po\nLMNd2/84W8NUEB2/ZTRO8VXIb6S92lgHyA19REhixjnFI4mrY6TTi9CqHGNsdvGm\n4EmoGkmI4KsmSagYqso6JPQEiyrTykfbmyVj3Js/MxSe81soV67JdzldO+hRVYrD\nT7FLcC21FwKBgQDzAj9i+rvzePIG0rLGFyZY8MiccQ8Z3KJqadn0YGy2pVg5dFZd\nCPSbFJYDdfYbNfqEXBTcueJ+Zb/4ybXHxtVLOW2XQuXrlsJ34+mKlC3NhIOg5dWY\n0aVfkDWjQsYa19Bj29sRNvSBbrb8fI6rHIfqTpbQC+yOGGcCEBvT7xctcQKBgEwm\n8uZ8mlNq+SF0Xmcl1Ti3GkUjdfxSEF7seIcQ3j6ciVfVjYeZcXpBzHNmgVtKAUEi\nihl9w9cIMQthHNDi9xXXDaysWAVpu1cvDR7iv/kYgrdw/n5aU9jOsH33a/PeX7K9\nRSws049tNrDX/RHgpIA/o65Z+g6vEpVkX+v9aQgpAoGBALOJGepNiWtkUh/4Zqhf\novRa4l0MXP12src80YQ/laEu5yd15NBpJLZc1N+VR8vbzReqyyCFxSFXzDYRnxsR\ncKp8tReTDEAs8HdPvEBVQ0jQ40C0RHHMj9LzZ89CioqmcgBT4tPuVTIph3roWsli\nLB6WQvwHvdoF+JDCK+VKW4+Z\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-l5a17@dsefinalproject-vision-optical.iam.gserviceaccount.com",
+  "client_id": "116258972723307291142",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-l5a17%40dsefinalproject-vision-optical.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
