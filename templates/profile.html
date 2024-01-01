@@ -14,6 +14,54 @@
   <title>
     Admin Profile - Vision Optical
   </title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: pink;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        padding: 20px;
+    }
+
+    #generateButton {
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: black;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    #generateButton:hover {
+        background-color: red;
+    }
+</style>
+<style>
+  .col-md-6 {
+      margin-bottom: 15px;
+  }
+
+  .form-label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+  }
+
+  .form-select {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+  }
+</style>
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
   <!-- Nucleo Icons -->
@@ -297,7 +345,21 @@
                 <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Mobile:</strong> &nbsp; (94) 23 45 678</li>
                 <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Email:</strong> &nbsp; info@visionoptical.shop</li>
                 <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Location:</strong> &nbsp; Variyapola, Kurunegala</li>
-              </ul>
+                <div class="container">
+                  <hr>
+                  <h6>Generate Reports</h6>
+                  <div class="col-md">
+                    <label class="form-label" for="inputCategory">Doctors</label>
+                    <select name="category" class="form-select" id="inputCategory">
+                        <option selected="selected">B Balalla</option>
+                        <option>K Hettiarachchi</option>
+                        <option>Naveen Herath</option>
+                    </select>
+                  </div>
+                  </ul>
+                </div class="container">
+                  <button id="generateButton" onclick="generatePDF()">Generate Reports</button>
+              </div>
             </div>
           </div>
         </div>
@@ -320,6 +382,33 @@
     </div>
   </div>
   
+
+  <script>
+    function generatePDF() {
+        // Get the selected option from the dropdown
+        var selectedDoctor = document.getElementById('inputCategory').value;
+
+        // Make an asynchronous request to the server to generate the PDF
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', '/generate_pdf?doctor=' + encodeURIComponent(selectedDoctor), true);
+        xhr.responseType = 'arraybuffer';
+
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                // Create a Blob from the array buffer
+                var blob = new Blob([xhr.response], { type: 'application/pdf' });
+
+                // Create a link element and trigger a click to download the file
+                var link = document.createElement('a');
+                link.href = window.URL.createObjectURL(blob);
+                link.download = 'report.pdf';
+                link.click();
+            }
+        };
+
+        xhr.send();
+    }
+</script>
   <!--   Core JS Files   -->
   <script src="./static/js/core/popper.min.js"></script>
   <script src="./static/js/core/bootstrap.min.js"></script>

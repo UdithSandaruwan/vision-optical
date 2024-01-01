@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session, send_file
+from flask import Flask, render_template, request, redirect, url_for, session, send_file, make_response
 from database import add_user_data_to_db, get_user_auth_data, add_appointment_data_to_db
 from firebase import SignUp_user_auth
 import database
@@ -7,6 +7,9 @@ from authlib.integrations.flask_client import OAuth
 import json 
 import os
 import sender, sender2
+from flask import send_file
+from io import BytesIO
+from fpdf import FPDF
 
 app = Flask(__name__)
 
@@ -180,6 +183,40 @@ def update_status(email):
   Email = email
   database.update_appointment_status_in_db(Email)
   return redirect(request.referrer)
+
+@app.route('/generate_pdf')
+def generate_pdf():
+    selected_doctor = str(request.args.get('doctor', 'Unknown Doctor'))
+
+    appointment_data = database.doc_appointment_data(selected_doctor)
+    pdf = FPDF(orientation='L')  
+    pdf.add_page()
+    pdf.set_font("Arial", size=12)
+
+    pdf.cell(0, 10, f"Report of {selected_doctor}", ln=True, align='C')
+    header = ["Name", "Phone", "Doctor", "Email", "Message", "status"]
+
+    max_widths = [pdf.get_string_width(col) for col in header]
+    for row in appointment_data:
+        for i, col in enumerate(header):
+            max_widths[i] = max(max_widths[i], pdf.get_string_width(str(row[col])))
+
+    for i, col in enumerate(header):
+        pdf.cell(max_widths[i] + 6, 10, col, border=1) 
+    pdf.ln()
+
+    for row in appointment_data:
+        for i, col in enumerate(header):
+            pdf.cell(max_widths[i] + 6, 10, str(row[col]), border=1) 
+        pdf.ln()
+
+    pdf_output = BytesIO(pdf.output(dest='S').encode('latin1'))
+
+    response = make_response(pdf_output.getvalue())
+    response.headers['Content-Type'] = 'application/pdf'
+    response.headers['Content-Disposition'] = f'attachment; filename=report_for_{selected_doctor}.pdf'
+
+    return response
 
 if __name__ == "__main__":
   app.run(host='0.0.0.0', debug=True)

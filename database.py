@@ -106,5 +106,21 @@ def user_appointment_data(email):
 
     return appointment_list
 
+appointment_list_doc= []
+def doc_appointment_data(doctor): 
+    global appointment_list, appointment_count_u
+    appointment_list.clear()
+    appointment_count_u = 0
+
+    with engine.connect() as conn:
+        query = text("SELECT * FROM flaskdevelopment.appointments WHERE category = :doctor")
+        result = conn.execute(query, {"doctor": doctor})
+
+        for row in result:
+            user_data = {"Name": row[0], "Phone": row[1], "Doctor": row[2], "Email": row[3], "Message": row[4], "status": row[5]}
+            appointment_list_doc.append(user_data)
+
+    return appointment_list_doc
+
 
     
