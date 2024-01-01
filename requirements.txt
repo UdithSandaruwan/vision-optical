@@ -7,4 +7,3 @@ python-dotenv
 requests
 Authlib
 fpdf
-io
